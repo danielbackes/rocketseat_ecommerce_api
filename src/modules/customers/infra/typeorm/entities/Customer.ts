@@ -20,7 +20,7 @@ class Customer {
   @Column()
   email: string;
 
-  @OneToMany(() => Order, order => order.customer_id)
+  @OneToMany(() => Order, order => order.customer)
   orders: Order[];
 
   @CreateDateColumn()

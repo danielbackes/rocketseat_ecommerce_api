@@ -20,12 +20,12 @@ class Order {
   @Column()
   customer_id: string;
 
-  @ManyToOne(() => Customer)
+  @ManyToOne(() => Customer, customer => customer.orders)
   @JoinColumn({ name: 'customer_id' })
   customer: Customer;
 
-  @OneToMany(() => OrdersProducts, ordersProducts => ordersProducts.order_id, {
-    cascade: ['insert'],
+  @OneToMany(() => OrdersProducts, order_products => order_products.order, {
+    cascade: true,
   })
   order_products: OrdersProducts[];
 
